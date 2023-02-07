@@ -1,0 +1,12 @@
+/* Nav style */
+.navbar .navbar-nav .nav-item .nav-link.active{
+   color: rgb(101, 101, 255);
+   font-weight: 900!important;
+}
+.rouded-btn{
+   border-radius: 25px!important;
+}
+.bloc-auteur{
+   position: sticky;
+   top: 0;
+}
