@@ -2,6 +2,9 @@
 
 define('APP_NAME', 'Blog');
 
+require_once('fonctions/form_messages.php');
+require_once('configs/database.php');
+
 $page = $_GET['page'];
 
 if(!isset($page)){
@@ -23,6 +26,18 @@ if(!isset($page)){
 }elseif($page == 'contact'){
 
    require_once('pages/front/contact.php');
+
+}elseif($page == 'connexion'){
+
+   require_once('pages/front/connexion.php');
+
+}elseif($page == 'inscription'){
+
+   require_once('pages/front/inscription.php');
+
+}elseif($page == 'inscription_reussi'){
+
+   require_once('pages/front/inscription_success.php');
 
 }else{
    

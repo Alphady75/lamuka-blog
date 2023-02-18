@@ -23,9 +23,15 @@
          <div class="container">
             <div class="row">
                <div class="col-sm-6" style="margin-left: auto;text-align:right;">
-                  <a class="btn btn-primary rouded-btn" href="?page=login">
+
+                  <a class="btn btn-primary rouded-btn" href="?page=connexion">
                      Connexion
                   </a>
+                  &nbsp;&nbsp;
+                  <a class="btn btn-outline-primary rouded-btn" href="?page=inscription">
+                     <i class="fa fa-user"></i> Inscription
+                  </a>
+
                </div>
             </div>
          </div>
