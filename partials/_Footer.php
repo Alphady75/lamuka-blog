@@ -10,6 +10,15 @@
    </div>
 </footer>
 <script src="assets/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
 </body>
 
 </html>

@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+require_once('filters/EstConnecter.php');
+
 define('APP_NAME', 'Blog');
 
 require_once('fonctions/form_messages.php');
@@ -39,8 +42,30 @@ if(!isset($page)){
 
    require_once('pages/front/inscription_success.php');
 
+}elseif($page == 'profil'){
+
+   require_once('pages/front/profil.php');
+
+}elseif($page == 'admin-artile-liste'){
+
+   require_once('pages/admin/articles/liste.php');
+
+}elseif($page == 'admin-artile-ajouter'){
+
+   require_once('pages/admin/articles/ajouter.php');
+
+}elseif($page == 'deconnexion'){
+
+   //session_destroy();
+
+   unset($_SESSION['user_id']);
+
+   header('Location: index.php');
+
 }else{
    
    require_once('pages/front/404.php');
 
 }
+
+require_once('partials/_user_sidebare.php');
