@@ -46,13 +46,25 @@ if(!isset($page)){
 
    require_once('pages/front/profil.php');
 
-}elseif($page == 'admin-artile-liste'){
+}elseif($page == 'admin-article-liste'){
 
    require_once('pages/admin/articles/liste.php');
 
-}elseif($page == 'admin-artile-ajouter'){
+}elseif($page == 'admin-article-ajouter'){
 
    require_once('pages/admin/articles/ajouter.php');
+   
+}elseif($page == 'article-details'){
+
+   require_once('pages/admin/articles/details.php');
+
+}elseif($page == 'article-modifier'){
+
+   require_once('pages/admin/articles/modifier.php');
+
+}elseif($page == 'article-supprimer'){
+
+   require_once('pages/admin/articles/supprimer.php');
 
 }elseif($page == 'deconnexion'){
 

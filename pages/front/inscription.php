@@ -29,7 +29,7 @@ if (isset($_POST['envoyer'])) {
       $erreurs['terms'] = champObligatoir("Veuillez accepter nos terms et conditions d'utilisation");
    }
 
-   // Verifions si un utilisateur s'est déjà inscrit avec une adresse email
+   // Verifions si un utilisateur s'est déjà inscrit avec cette adresse email
    $query = $db->prepare("SELECT * FROM user WHERE email = :email");
 
    $query->execute([

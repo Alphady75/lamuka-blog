@@ -4,6 +4,20 @@ require_once('filters/PeutVisiter.php');
 
 $title = 'Ajouter un article';
 
+if (isset($_POST['enregistrer'])) {
+
+   extract($_POST);
+
+   $requette = $db->prepare("INSERT INTO article (titre, contenu, online) VALUES (:titre, :contenu, :online)");
+   $requette->execute([
+      'titre' => $titre,
+      'contenu' => $contenu,
+      'online' => isset($online) ? true : false,
+   ]);
+
+   header('Location: index.php?page=admin-article-liste');
+}
+
 require 'partials/_header.php'; ?>
 
 <section>
@@ -18,7 +32,7 @@ require 'partials/_header.php'; ?>
                   <form method="post">
 
                      <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Titre de l'article">
+                        <input name="titre" type="text" class="form-control" id="floatingInput" placeholder="Titre de l'article">
                         <label for="floatingInput">Titre de l'article</label>
                      </div>
 
@@ -37,7 +51,7 @@ require 'partials/_header.php'; ?>
                      </div>
 
                      <div class="form-check mb-4">
-                        <input name="online" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <input name="online" class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
                            Mettre en ligne
                         </label>

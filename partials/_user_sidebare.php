@@ -12,8 +12,8 @@
         <i class="fa fa-tags"></i> Mes articles
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="index.php?page=admin-artile-liste">Liste</a></li>
-        <li><a class="dropdown-item" href="index.php?page=admin-artile-ajouter">Ajouter</a></li>
+        <li><a class="dropdown-item" href="index.php?page=admin-article-liste">Liste</a></li>
+        <li><a class="dropdown-item" href="index.php?page=admin-article-ajouter">Ajouter</a></li>
       </ul>
     </div>
   </div>
