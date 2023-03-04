@@ -8,9 +8,33 @@ if (isset($_POST['enregistrer'])) {
 
    extract($_POST);
 
-   $requette = $db->prepare("INSERT INTO article (titre, contenu, online) VALUES (:titre, :contenu, :online)");
+   //var_dump($_FILES);
+
+   $fichierImage = $_FILES["image"];
+   $fichierImageNom = $_FILES["image"]["name"];
+   $fichierImageType = $_FILES["image"]["type"];
+
+   //die($fichierImageType);
+
+   $fileUrl = "uploads/images/" . $fichierImage["name"];
+
+   if (isset($fichierImage)) {
+      
+      move_uploaded_file(
+         // Temp image location
+         $fichierImage["tmp_name"],
+
+         // New image location, __DIR__ is the location of the current PHP file
+         $fileUrl
+      );
+   }
+
+   //die();
+
+   $requette = $db->prepare("INSERT INTO article (titre, image, contenu, online) VALUES (:titre, :image, :contenu, :online)");
    $requette->execute([
       'titre' => $titre,
+      'image' => $fileUrl,
       'contenu' => $contenu,
       'online' => isset($online) ? true : false,
    ]);
@@ -29,7 +53,7 @@ require 'partials/_header.php'; ?>
                   <div class="py-4">
                      <h1 class="h5">Ajouter un article</h1>
                   </div>
-                  <form method="post">
+                  <form method="post" enctype="multipart/form-data">
 
                      <div class="form-floating mb-4">
                         <input name="titre" type="text" class="form-control" id="floatingInput" placeholder="Titre de l'article">

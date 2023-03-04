@@ -1,6 +1,6 @@
 <?php
 
-$requette = $db->query("SELECT * FROM article");
+$requette = $db->query("SELECT * FROM article ORDER BY date_publication DESC");
 $articles = $requette->fetchAll();
 
 require_once('filters/PeutVisiter.php');
@@ -15,8 +15,14 @@ require 'partials/_header.php'; ?>
             <div class="card my-5">
                <div class="card-body">
                   <div class="py-4">
-                     <h1 class="h5">Mes articles</h1>
-                     <a href="index.php?page=admin-article-ajouter" class="btn btn-primary">Ajouter</a>
+                     <div class="row">
+                        <div class="col-sm-7">
+                           <h1 class="h5">Mes articles (<?= count($articles) ?>) </h1>
+                        </div>
+                        <div class="col-sm-2 offset-sm-3">
+                           <a href="index.php?page=admin-article-ajouter" class="btn btn-primary">Nouvel article</a>
+                        </div>
+                     </div>
                   </div>
                   <div class="table-responsive">
                      <table class="table table-borderless table-striped">
@@ -29,11 +35,17 @@ require 'partials/_header.php'; ?>
                            <th>Date publication</th>
                            <th>Actions</th>
                         </tr>
-                        <?php foreach($articles as $article): ?>
+                        <?php foreach ($articles as $article) : ?>
                            <tr>
                               <td><?= $article['id'] ?></td>
                               <td class="w-25"><strong><?= $article['titre'] ?></strong></td>
-                              <td>image ici</td>
+                              <td>
+                                 <?php if ($article['image']) : ?>
+
+                                    <img src="<?= $article['image'] ?>" class="rouded-btn" width="90" alt="">
+
+                                 <?php endif; ?>
+                              </td>
                               <td>
                                  <span class="badge bg-<?= $article['online'] == 1 ? 'success' : 'secondary' ?>">
                                     <?= $article['online'] == 1 ? 'En ligne' : 'Hors ligne' ?>

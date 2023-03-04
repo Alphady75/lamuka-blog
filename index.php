@@ -26,6 +26,10 @@ if(!isset($page)){
 
    require_once('pages/front/blog.php');
 
+}elseif($page == 'blog-details'){
+
+   require_once('pages/front/blog_details.php');
+
 }elseif($page == 'contact'){
 
    require_once('pages/front/contact.php');
